@@ -71,6 +71,6 @@ Backpropagation 진행 과정
 단어는 거창하지만 그냥 초기화한 weight와 bias, input 값을 가지고 일단 네트워크를 통과시켜 output이 얼마가 나오는지, target 값과 얼마나 차이가 나는지를 보는 과정이다.    
 
 이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.    
-<img src="images/8.PNG" width="500px" height="300px" title="NN" alt="NN"></img><br/>
+<img src="images/8.PNG" width="650px" height="300px" title="NN" alt="NN"></img><br/>
 
 
