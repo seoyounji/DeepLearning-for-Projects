@@ -20,7 +20,7 @@ ANN에 기반을 둔 머신러닝 기술의 한 종류이며 머신러닝의 하
 이 그림을 보면 input으로 들어온 각 x 값에 weight인 w 값이 각각 곱해지고 더해진 뒤 bias 값을 추가로 더하고 나온 값을 Activation function에 통과시키면 최종적으로 output이 나온다는 걸 알 수 있다.    
 
 뉴런을 여러개 모아본다면 대략 아래와 같은 구조가 된다.    
-<img src="images/4.png" width="300px" height="150px" title="신경망 구조" alt="신경망 구조"></img><br/>
+<img src="images/4.PNG" width="300px" height="150px" title="신경망 구조" alt="신경망 구조"></img><br/>
 
 이는 가운데 hidden layer가 1개인 가장 단순한 Single Layer Network 구조로 이를 이용해 AND나 OR 문제 같은 선형방정식을 해결할 수 있었다.    
 하지만 XOR 문제가 등장하며 더이상 Single Layer Network로는 이 문제를 해결할 수 없게 되었다.    
@@ -55,7 +55,7 @@ Chain Rule?
 -------------
 
 미분의 연쇄법칙이라고도 불리는 법칙으로 아래와 같이 정의된다.    
-<img src="images/6.png" width="300px" height="150px" title="chain rule" alt="chain rule"></img><br/>
+<img src="images/6.PNG" width="300px" height="150px" title="chain rule" alt="chain rule"></img><br/>
 
 미분을 구한다는 것은 변화량을 구한다는 것과 같다.    
 이 정의에 따르면 x가 변화했을 때 g(x)의 변화량을 알 수 있고    
@@ -71,6 +71,6 @@ Backpropagation 진행 과정
 단어는 거창하지만 그냥 초기화한 weight와 bias, input 값을 가지고 일단 네트워크를 통과시켜 output이 얼마가 나오는지, target 값과 얼마나 차이가 나는지를 보는 과정이다.    
 
 이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.    
-<img src="images/8.png" width="300px" height="150px" title="NN" alt="NN"></img><br/>
+<img src="images/8.PNG" width="300px" height="150px" title="NN" alt="NN"></img><br/>
 
 
