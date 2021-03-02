@@ -105,7 +105,7 @@ E에 대한 w(1)10의 기여도를 식으로 풀어보면 다음과 같다.<br/>
 
 이 계산 결과로 전체 에러 E에 대해 a20이 0.37만큼 기여했다는 것을 알 수 있다.    
 이런 식으로 두번째 항과 세번째 항도 계산해보면 아래와 같다.<br/><br/>
-<img src="images/17.PNG" title="1" alt="1"></img><br/>
+<img src="images/17.PNG" title="1" alt="1"></img><br/><br/>
 <img src="images/18.PNG" title="2" alt="2"></img><br/>
 
 최종적으로 E에 w(1)10가 기여한 정도는 아래와 같다.<br/><br/>
@@ -126,8 +126,8 @@ learning rate는 보통 0.1보다 낮은 값으로 설정하고 학습을 진행
 <img src="images/23.JPG" title="w010" alt="w010"></img><br/>
 
 각 항을 구한 뒤 최종 값을 계산해보자.<br/><br/>
-<img src="images/24.JPG" title="1" alt="1"></img><br/>
-<img src="images/25.JPG" title="2" alt="2"></img><br/>
+<img src="images/24.JPG" title="1" alt="1"></img><br/><br/>
+<img src="images/25.JPG" title="2" alt="2"></img><br/><br/>
 <img src="images/26.JPG" title="3" alt="3"></img><br/>
 
 이로써 w(0)10이 전체 에러 E에 대해 0.0034만큼 기여했다는 것을 알아냈다. 아까와 동일한 learning rate를 주고 위에서 설명한 식을 이용해 새로 갱신될 w(0)10 값을 구해보면 아래와 같다.<br/><br/>
