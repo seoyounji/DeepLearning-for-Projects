@@ -41,7 +41,7 @@ XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer
 
 이제 활성화 함수를 이용해 Multi Layer Network를 만들 수 있게 되었다.    
 딥러닝이라고 부를 수 있는 네트워크 구조가 만들어지기 시작한 것이다.    
-그렇다면 이 Multi Layer, 딥러닝은 어떻게 학습시켜야 하는 걸까?
+그렇다면 이 Multi Layer Neural Network 어떻게 학습시켜야 하는 걸까?
 
 그래서 나온 Backpropagation
 -----------------------------
