@@ -36,8 +36,8 @@ XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer
 예를 들어 선형함수 h(x) = cx를 활성화 함수로 사용하는 3-layer Neural Network가 있다고 가정해보자.    
 해당 NN을 식으로 나타내면 y(x) = h(h(h(x)))가 되는데 이는 사실 c^3x와 같기 때문에 결국 선형함수 g(x) = c^3x를 활성화 함수로 사용하는 1-layer NN과 같은 결과를 내게 된다.       
 즉 linear한 연산을 가지는 layer는 수십개를 쌓아도 선형 함수의 특징 때문에 결국 하나의 linear 연산으로 나타낼 수 있기에 활성화 함수는 비선형 함수로 사용해야 하는 것이다.    
-초기엔 활성화 함수로 아래의 sigmoid function을 사용했다.    
-<img src="images/5.png" width="300px" height="150px" title="시그모이드 함수" alt="시그모이드 함수"></img><br/>
+초기엔 활성화 함수로 아래의 step function을 사용했다.    
+<img src="images/21.jpg" width="300px" height="150px" title="계단 함수" alt="계단 함수"></img><br/>
 
 이제 활성화 함수를 이용해 Multi Layer Network를 만들 수 있게 되었다.    
 딥러닝이라고 부를 수 있는 네트워크 구조가 만들어지기 시작한 것이다.    
@@ -72,6 +72,10 @@ Backpropagation 진행 과정
 
 이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.    
 <img src="images/8.PNG" width="650px" height="300px" title="NN" alt="NN"></img><br/>
+
+이 때 활성화 함수로 위에서 소개한 step function이 아닌 sigmoid function을 사용한 이유는 아래 식을 계산하면서 알 수 있겠지만 step function은 모든 입력에 대해 미분값이 무조건 0이므로 Chain rule을 이용한 계산이 불가능하기 때문이다.    
+backpropagation 도입 후 기존에 활성화 함수로 사용되던 step function의 이런 문제점이 대두되면서 새로운 활성화 함수로 sigmoid function이 사용되기 시작했다.     
+<img src="images/5.png" width="300px" height="150px" title="시그모이드 함수" alt="시그모이드 함수"></img><br/>
 
 layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다.     
 <img src="images/10.PNG" title="z10z11" alt="z10z11"></img><br/>
@@ -114,6 +118,62 @@ learning rate는 보통 0.1보다 낮은 값으로 설정하고 학습을 진행
 나와야 하는 target 값(0.2)이 실제로 나온 output 값(0.57)보다 작으므로 weight를 낮춰줘야 한다.     
 최종적으로 갱신되는 w(1)10은 아래 식과 같다.    
 <img src="images/20.PNG" title="new w110" alt="new w110"></img><br/>
+
+이런 식으로 이번에는 layer0의 w(0)10 값을 업데이트 해보자.    
+<img src="images/22.jpg" title="layer0" alt="layer0"></img><br/>
+
+위 그림에서 확인할 수 있다시피 w(0)10은 w(1)10 보다 많은 값에 영향을 미치고 있다. 전체 에러 E에 대해 w(0)10가 기여한 정도는 아래 식과 같다.    
+<img src="images/23.jpg" title="w010" alt="w010"></img><br/>
+
+각 항을 구한 뒤 최종 값을 계산해보자.    
+<img src="images/24.jpg" title="1" alt="1"></img><br/>
+<img src="images/25.jpg" title="2" alt="2"></img><br/>
+<img src="images/26.jpg" title="3" alt="3"></img><br/>
+
+이로써 w(0)10이 전체 에러 E에 대해 0.0034만큼 기여했다는 것을 알아냈다. 아까와 동일한 learning rate를 주고 위에서 설명한 식을 이용해 새로 갱신될 w(0)10 값을 구해보면 아래와 같다.    
+<img src="images/27.jpg" title="new w010" alt="new w010"></img><br/>
+
+그런데 sigmoid function 만으로 되는걸까?
+------------------------
+
+그럼 위에서 만든 예시처럼 모든 NN에서 활성화 함수로 sigmoid function만 써도 되는 걸까?         
+sigmoid function에서 미분 값은 0에서 0.25 사이의 값만 표현 가능한데 함수의 특성 상 layer가 깊어질수록 전체 에러 E에 대해 weight가 기여한 정도가 0에 가까운 값이 되어 제대로 학습이 되지 않는 문제점이 발생한다.     
+즉 output layer에서 멀어질수록, input layer에서 가까운 hidden layer일수록 학습이 제대로 되지 않는 현상이 발생한다는 것이다.     
+이를 vanishing gradient 현상이라고 한다.    
+그래서 다른 활성화 함수들을 사용하기 시작했다.    
+
+* tanh function
+<img src="images/28.jpg" title="tanh" alt="tanh"></img><br/>
+sigmoid function의 최적화 과정이 느려지는 문제를 해결한 함수이지만 vanishing gradient 문제가 여전히 남아있고 성능 또한 좋지 않다.    
+
+* ReLU function
+<img src="images/29.jpg" title="ReLU" alt="ReLU"></img><br/>
+최근 가장 많이 사용되는 활성화 함수이다.       
+sigmoid function과 tanh function과 비교시 학습이 훨씬 빨라지고, 연산 비용이 크지 않다는 장점이 있지만 x < 0 인 값들에 대해서는 기울기가 0이기 때문에 여전히 뉴런이 죽을 수 있다는 단점이 존재한다.     
+
+* Leaky ReLU function
+<img src="images/30.jpg" title="leaky ReLU" alt="leaky ReLU"></img><br/>
+x < 0인 값들에 대해 기울기가 0이 되지 않게 함으로써 ReLU function 사용시 뉴런이 죽는 단점을 해결하기 위해 나온 활성화 함수이다.     
+ReLU function과 함께 최근 가장 많이 사용되는 활성화 함수이다.        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
