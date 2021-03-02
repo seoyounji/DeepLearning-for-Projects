@@ -6,10 +6,8 @@
 인공지능의 하위 개념이다.
 
 * 딥러닝    
-ANN에 기반을 둔 머신러닝 기술의 한 종류이며 머신러닝의 하위 개념이다.<br/><br/>
+ANN에 기반을 둔 머신러닝 기술의 한 종류이며 머신러닝의 하위 개념이다.         
 
----
-<br/>
 
 그렇다면 Artificial Neural Network란 뭘까?
 -------------------------------------------
@@ -28,7 +26,7 @@ ANN에 기반을 둔 머신러닝 기술의 한 종류이며 머신러닝의 하
 하지만 XOR 문제가 등장하며 더이상 Single Layer Network로는 이 문제를 해결할 수 없게 되었다.    
 XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer Network가 필요했지만 Multi Layer를 어떻게 만들어야하는지, 어떻게 학습시켜야 하는지 알 수 없었기 때문에 머신러닝에 암흑기가 도래하게 된다.    
 여담이지만 딥러닝이라는 이름도 이 hidden layer가 2개 이상 deep 하게 계속 쌓이는 것에서 유래된 것이다.    
-하지만 후에 `비선형 활성화 함수(Non-linear Activation function)과 Backpropagation 알고리즘의 도입으로 Multi Layer Network를 만들고 학습시킬 수 있게 되었다.`    
+하지만 후에 `<span style="color:red">비선형 활성화 함수(Non-linear Activation function)과 Backpropagation 알고리즘의 도입으로 Multi Layer Network를 만들고 학습시킬 수 있게 되었다.</span>`    
 
 그렇다면 활성화 함수(Activation function)이란?
 -----------------------------------
