@@ -19,7 +19,7 @@ ANN에 기반을 둔 머신러닝 기술의 한 종류이며 머신러닝의 하
 
 이 그림을 보면 input으로 들어온 각 x 값에 weight인 w 값이 각각 곱해지고 더해진 뒤 bias 값을 추가로 더하고 나온 값을 Activation function에 통과시키면 최종적으로 output이 나온다는 걸 알 수 있다.    
 
-뉴런을 여러개 모아본다면 대략 아래와 같은 구조가 된다.<br/>
+뉴런을 여러개 모아본다면 대략 아래와 같은 구조가 된다.<br/><br/>
 <img src="images/4.PNG" title="신경망 구조" alt="신경망 구조"></img><br/>
 
 이는 가운데 hidden layer가 1개인 가장 단순한 Single Layer Network 구조로 이를 이용해 AND나 OR 문제 같은 선형방정식을 해결할 수 있었다.    
