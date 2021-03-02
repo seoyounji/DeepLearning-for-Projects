@@ -36,7 +36,7 @@ XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer
 예를 들어 선형함수 h(x) = cx를 활성화 함수로 사용하는 3-layer Neural Network가 있다고 가정해보자.    
 해당 NN을 식으로 나타내면 y(x) = h(h(h(x)))가 되는데 이는 사실 c^3x와 같기 때문에 결국 선형함수 g(x) = c^3x를 활성화 함수로 사용하는 1-layer NN과 같은 결과를 내게 된다.       
 즉 linear한 연산을 가지는 layer는 수십개를 쌓아도 선형 함수의 특징 때문에 결국 하나의 linear 연산으로 나타낼 수 있기에 활성화 함수는 비선형 함수로 사용해야 하는 것이다.    
-초기엔 활성화 함수로 아래의 step function을 사용했다.    
+초기엔 활성화 함수로 아래의 step function을 사용했다.<br/><br/>
 <img src="images/21.JPG" title="계단 함수" alt="계단 함수"></img><br/>
 
 이제 활성화 함수를 이용해 Multi Layer Network를 만들 수 있게 되었다.    
@@ -54,7 +54,7 @@ XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer
 Chain Rule?
 -------------
 
-Chain rule은 미분의 연쇄법칙이라고도 불리는 법칙으로 아래와 같이 정의된다.    
+Chain rule은 미분의 연쇄법칙이라고도 불리는 법칙으로 아래와 같이 정의된다.<br/><br/>
 <img src="images/6.PNG" title="chain rule" alt="chain rule"></img><br/>
 
 미분을 구한다는 것은 변화량을 구한다는 것과 같다.    
@@ -70,45 +70,45 @@ Backpropagation 진행 과정
 일단 먼저 Forward propagation을 진행해야한다.     
 단어는 거창하지만 그냥 초기화한 weight와 bias, input 값을 가지고 일단 네트워크를 통과시켜 output이 얼마가 나오는지, target 값과 얼마나 차이가 나는지를 보는 과정이다.    
 
-이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.    
+이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.<br/><br/>
 <img src="images/8.PNG" title="NN" alt="NN"></img><br/>
 
 이 때 활성화 함수로 위에서 소개한 step function이 아닌 sigmoid function을 사용한 이유는 아래 식을 계산하면서 알 수 있겠지만 step function은 모든 입력에 대해 미분값이 무조건 0이므로 Chain rule을 이용한 계산이 불가능하기 때문이다.    
-backpropagation 도입 후 기존에 활성화 함수로 사용되던 step function의 이런 문제점이 대두되면서 새로운 활성화 함수로 아래 그림의 sigmoid function이 사용되기 시작했다.     
+backpropagation 도입 후 기존에 활성화 함수로 사용되던 step function의 이런 문제점이 대두되면서 새로운 활성화 함수로 아래 그림의 sigmoid function이 사용되기 시작했다.<br/><br/>
 <img src="images/5.png" width="300px" height="200px" title="시그모이드 함수" alt="시그모이드 함수"></img><br/>
 
-layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다.     
+layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다.<br/><br/>
 <img src="images/10.PNG" title="z10z11" alt="z10z11"></img><br/>
 
-구한 z10과 z11 값을 활성화 함수인 sigmoid 함수에 넣어 a10과 a11을 구해보면 아래와 같다.     
+구한 z10과 z11 값을 활성화 함수인 sigmoid 함수에 넣어 a10과 a11을 구해보면 아래와 같다.<br/><br/>
 <img src="images/11.PNG"  title="a10a11" alt="a10a11"></img><br/>
 
 이런 방식으로 y1과 y2를 구해보면 y1 = 0.57 / y2 = 0.61 이 나온다.     
-이는 우리가 원했던 y1 = 0.2과 y2 = 0.7 값과 차이가 나는데 이 오차 E를 MSE 함수를 이용해 구해보자. 나와야하는 값을 t로, 실제 나온 값을 y라고 할 때 오차 E는 아래와 같다.     
+이는 우리가 원했던 y1 = 0.2과 y2 = 0.7 값과 차이가 나는데 이 오차 E를 MSE 함수를 이용해 구해보자. 나와야하는 값을 t로, 실제 나온 값을 y라고 할 때 오차 E는 아래와 같다.<br/><br/>
 <img src="images/12.PNG" title="MSE" alt="MSE"></img><br/>
 
 이제 나온 이 오차 E를 Backpropagation 하기만 하면 된다!     
 
-Forward propagation을 통해 구해진 layer 0과 layer 1을 살펴보면 아래와 같다.    
+Forward propagation을 통해 구해진 layer 0과 layer 1을 살펴보면 아래와 같다.<br/><br/>
 <img src="images/13.PNG" title="layer0layer1" alt="layer0layer1"></img><br/>
 
 학습시켜야 할 값은 weight와 bias 뿐이므로 0.4로 초기화했던 w(1)10 값을 업데이트해보자.    
 그러기 위해선 w(1)10이 전체 에러인 E에 얼마나 영향을 미쳤는지에 대한 정도를 구해야 하는데 바로 이때 위에서 설명한 Chain rule이 사용된다.       
-E에 대한 w(1)10의 기여도를 식으로 풀어보면 다음과 같다.    
+E에 대한 w(1)10의 기여도를 식으로 풀어보면 다음과 같다.<br/><br/>
 <img src="images/14.PNG" title="Ew" alt="Ew"></img><br/>
 
-먼저 첫번째 항부터 계산해보자. MSE에 따르면 E는 아래와 같이 나타낼 수 있었다.    
+먼저 첫번째 항부터 계산해보자. MSE에 따르면 E는 아래와 같이 나타낼 수 있었다.<br/><br/>
 <img src="images/15.PNG" title="E" alt="E"></img><br/>
 
-위 식을 a20에 대해 편미분해 첫번째 항을 구하면 아래와 같다.    
+위 식을 a20에 대해 편미분해 첫번째 항을 구하면 아래와 같다.<br/><br/>
 <img src="images/16.PNG" title="a20" alt="a20"></img><br/>
 
 이 계산 결과로 전체 에러 E에 대해 a20이 0.37만큼 기여했다는 것을 알 수 있다.    
-이런 식으로 두번째 항과 세번째 항도 계산해보면 아래와 같다.    
+이런 식으로 두번째 항과 세번째 항도 계산해보면 아래와 같다.<br/><br/>
 <img src="images/17.PNG" title="1" alt="1"></img><br/>
 <img src="images/18.PNG" title="2" alt="2"></img><br/>
 
-최종적으로 E에 w(1)10가 기여한 정도는 아래와 같다.    
+최종적으로 E에 w(1)10가 기여한 정도는 아래와 같다.<br/><br/>
 <img src="images/19.PNG" title="3" alt="3"></img><br/>
 
 이제 이 값을 학습식에 넣으면 w(1)10을 업데이트할 수 있다.    
@@ -116,21 +116,21 @@ E에 대한 w(1)10의 기여도를 식으로 풀어보면 다음과 같다.
 learning rate는 보통 0.1보다 낮은 값으로 설정하고 학습을 진행시킬 수록 작아지게 설정하는 것이 일반적이나 이번 예시에서는 그냥 0.3으로 잡고 계산해보자.     
 새로 갱신될 w(1)10 값은 기존의 w(1)10 값에 learning rate * (전체 에러 E에 w(1)10이 기여한 정도) 값을 더하거나 빼서 계산된다.    
 나와야 하는 target 값(0.2)이 실제로 나온 output 값(0.57)보다 작으므로 weight를 낮춰줘야 한다.     
-최종적으로 갱신되는 w(1)10은 아래 식과 같다.    
+최종적으로 갱신되는 w(1)10은 아래 식과 같다.<br/><br/>
 <img src="images/20.PNG" title="new w110" alt="new w110"></img><br/>
 
-이런 식으로 이번에는 layer0의 w(0)10 값을 업데이트 해보자.    
+이런 식으로 이번에는 layer0의 w(0)10 값을 업데이트 해보자.<br/><br/>
 <img src="images/22.JPG" title="layer0" alt="layer0"></img><br/>
 
-위 그림에서 확인할 수 있다시피 w(0)10은 w(1)10 보다 많은 값에 영향을 미치고 있다. 전체 에러 E에 대해 w(0)10가 기여한 정도는 아래 식과 같다.    
+위 그림에서 확인할 수 있다시피 w(0)10은 w(1)10 보다 많은 값에 영향을 미치고 있다. 전체 에러 E에 대해 w(0)10가 기여한 정도는 아래 식과 같다.<br/><br/>
 <img src="images/23.JPG" title="w010" alt="w010"></img><br/>
 
-각 항을 구한 뒤 최종 값을 계산해보자.    
+각 항을 구한 뒤 최종 값을 계산해보자.<br/><br/>
 <img src="images/24.JPG" title="1" alt="1"></img><br/>
 <img src="images/25.JPG" title="2" alt="2"></img><br/>
 <img src="images/26.JPG" title="3" alt="3"></img><br/>
 
-이로써 w(0)10이 전체 에러 E에 대해 0.0034만큼 기여했다는 것을 알아냈다. 아까와 동일한 learning rate를 주고 위에서 설명한 식을 이용해 새로 갱신될 w(0)10 값을 구해보면 아래와 같다.    
+이로써 w(0)10이 전체 에러 E에 대해 0.0034만큼 기여했다는 것을 알아냈다. 아까와 동일한 learning rate를 주고 위에서 설명한 식을 이용해 새로 갱신될 w(0)10 값을 구해보면 아래와 같다.<br/><br/>
 <img src="images/27.JPG" title="new w010" alt="new w010"></img><br/>
 
 그런데 sigmoid function 만으로 되는걸까?
