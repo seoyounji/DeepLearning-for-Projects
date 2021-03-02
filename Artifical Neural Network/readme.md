@@ -74,7 +74,7 @@ Backpropagation 진행 과정
 <img src="images/8.PNG" title="NN" alt="NN"></img><br/>
 
 이 때 활성화 함수로 위에서 소개한 step function이 아닌 sigmoid function을 사용한 이유는 아래 식을 계산하면서 알 수 있겠지만 step function은 모든 입력에 대해 미분값이 무조건 0이므로 Chain rule을 이용한 계산이 불가능하기 때문이다.    
-backpropagation 도입 후 기존에 활성화 함수로 사용되던 step function의 이런 문제점이 대두되면서 새로운 활성화 함수로 sigmoid function이 사용되기 시작했다.     
+backpropagation 도입 후 기존에 활성화 함수로 사용되던 step function의 이런 문제점이 대두되면서 새로운 활성화 함수로 아래 그림의 sigmoid function이 사용되기 시작했다.     
 <img src="images/5.png" title="시그모이드 함수" alt="시그모이드 함수"></img><br/>
 
 layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다.     
