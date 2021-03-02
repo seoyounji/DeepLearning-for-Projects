@@ -87,7 +87,7 @@ layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을
 이는 우리가 원했던 y1 = 0.2과 y2 = 0.7 값과 차이가 나는데 이 오차 E를 MSE 함수를 이용해 구해보자. 나와야하는 값을 t로, 실제 나온 값을 y라고 할 때 오차 E는 아래와 같다.<br/><br/>
 <img src="images/12.PNG" title="MSE" alt="MSE"></img><br/>
 
-이제 나온 이 오차 E를 Backpropagation 하기만 하면 된다!     
+값을 넣어 계산해보면 E = 0.072가 나오는데 이제 나온 이 오차 E를 Backpropagation 하기만 하면 된다!     
 
 Forward propagation을 통해 구해진 layer 0과 layer 1을 살펴보면 아래와 같다.<br/><br/>
 <img src="images/13.PNG" title="layer0layer1" alt="layer0layer1"></img><br/>
