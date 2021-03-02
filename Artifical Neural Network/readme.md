@@ -140,16 +140,16 @@ learning rate는 보통 0.1보다 낮은 값으로 설정하고 학습을 진행
 sigmoid function에서 미분 값은 0에서 0.25 사이의 값만 표현 가능한데 함수의 특성 상 layer가 깊어질수록 전체 에러 E에 대해 weight가 기여한 정도가 0에 가까운 값이 되어 제대로 학습이 되지 않는 문제점이 발생한다.     
 즉 output layer에서 멀어질수록, input layer에서 가까운 hidden layer일수록 학습이 제대로 되지 않는 현상이 발생한다는 것이다.     
 이를 vanishing gradient 현상이라고 한다.    
-그래서 다른 활성화 함수들을 사용하기 시작했다.    
+그래서 다른 활성화 함수들을 사용하기 시작했다.<br/><br/>
 
 * tanh function       
 <img src="images/28.JPG" title="tanh" alt="tanh"></img><br/>
-sigmoid function의 최적화 과정이 느려지는 문제를 해결한 함수이지만 vanishing gradient 문제가 여전히 남아있고 성능 또한 좋지 않다.    
+sigmoid function의 최적화 과정이 느려지는 문제를 해결한 함수이지만 vanishing gradient 문제가 여전히 남아있고 성능 또한 좋지 않다.<br/><br/>
 
 * ReLU function        
 <img src="images/29.JPG" title="ReLU" alt="ReLU"></img><br/>
 최근 가장 많이 사용되는 활성화 함수이다.       
-sigmoid function과 tanh function과 비교시 학습이 훨씬 빨라지고, 연산 비용이 크지 않다는 장점이 있지만 x < 0 인 값들에 대해서는 기울기가 0이기 때문에 여전히 뉴런이 죽을 수 있다는 단점이 존재한다.     
+sigmoid function과 tanh function과 비교시 학습이 훨씬 빨라지고, 연산 비용이 크지 않다는 장점이 있지만 x < 0 인 값들에 대해서는 기울기가 0이기 때문에 여전히 뉴런이 죽을 수 있다는 단점이 존재한다.<br/><br/>
 
 * Leaky ReLU function          
 <img src="images/30.JPG" title="leaky ReLU" alt="leaky ReLU"></img><br/>
