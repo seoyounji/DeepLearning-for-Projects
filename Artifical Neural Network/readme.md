@@ -73,8 +73,8 @@ Backpropagation 진행 과정
 이번 예시에서 사용할 2-layer NN은 다음과 같다. weight와 input은 임의의 값으로 초기화한 상태이고 활성화 함수로는 sigmoid 함수를, 오차값 계산을 위한 error function으로는 MSE(Mean Squared Error) 함수를 사용한다.    
 <img src="images/8.PNG" width="650px" height="300px" title="NN" alt="NN"></img><br/>
 
-layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다. 
-<img src="images/10.PNG" width="300px" height="50px" title="z10z11" alt="z10z11"></img><br/>
+layer 0에 input으로 들어오게 되는 값을 계산해보자. 행렬 곱을 이용해 풀어보면 아래와 같이 wx들의 합의 형태로 나타나게 된다.     
+<img src="images/10.PNG" title="z10z11" alt="z10z11"></img><br/>
 
 구한 z10과 z11 값을 활성화 함수인 sigmoid 함수에 넣어 a10과 a11을 구해보면 아래와 같다.    
 <img src="images/11.PNG" width="100px" height="30px" title="a10a11" alt="a10a11"></img><br/>
