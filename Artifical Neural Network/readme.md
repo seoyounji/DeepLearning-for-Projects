@@ -37,7 +37,7 @@ XOR 문제는 풀기 위해선 hidden layer가 2개 이상 쌓여진 Multi Layer
 해당 NN을 식으로 나타내면 y(x) = h(h(h(x)))가 되는데 이는 사실 c^3x와 같기 때문에 결국 선형함수 g(x) = c^3x를 활성화 함수로 사용하는 1-layer NN과 같은 결과를 내게 된다.       
 즉 linear한 연산을 가지는 layer는 수십개를 쌓아도 선형 함수의 특징 때문에 결국 하나의 linear 연산으로 나타낼 수 있기에 활성화 함수는 비선형 함수로 사용해야 하는 것이다.    
 초기엔 활성화 함수로 아래의 step function을 사용했다.    
-<img src="images/21.JPG" width="300px" height="150px" title="계단 함수" alt="계단 함수"></img><br/>
+<img src="images/21.JPG" title="계단 함수" alt="계단 함수"></img><br/>
 
 이제 활성화 함수를 이용해 Multi Layer Network를 만들 수 있게 되었다.    
 딥러닝이라고 부를 수 있는 네트워크 구조가 만들어지기 시작한 것이다.    
