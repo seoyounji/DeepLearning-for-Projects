@@ -60,7 +60,11 @@ cuDNN은 CUDA Deep Neural Network library의 약자로 딥러닝을 돌릴 때 �
 
 CUDA는 로그인이 필요없는데 cuDNN은 로그인이 필요하다!        
 
-CUDA는 다운로드 파일을 실행하면 자동으로 설치되고 
+CUDA는 다운로드 파일을 실행하면 자동으로 설치되고 cuDNN의 경우엔 실행 파일이 아니라 그냥 압축 파일이 받아진다. 압축을 풀면 라이브러리 파일만 덩그러니 있는데 당황하지 말고 CUDA가 설치되어 있는 폴더에 복사해주기만 하면 된다! cudnn 속 각각의 bin, include, lib 폴더에 있는 파일들을 CUDA 폴더의 bin, include, lib 폴더에 복붙해주면 끝!               
+
+​            
+
+
 
 
 
