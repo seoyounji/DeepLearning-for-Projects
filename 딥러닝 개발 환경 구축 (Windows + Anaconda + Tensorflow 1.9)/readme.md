@@ -110,16 +110,35 @@ conda deactivate
 
 ------------------------------------
 
+Anaconda Prompt에서 명령어 하나만 입력하면 끝난다.........!             
 
+gpu 버전을 설치하고 싶다면             
 
+```cmd
+conda install --ignore-installed --upgrade tensorflow-gpu==(원하는 버전)
+```
 
+원하는 버전을 입력하지 않으면 자동으로 최신 버전으로 설치된다. cpu 버전을 설치하고 싶으면           
 
+```cmd
+conda install --ignore-installed --upgrade tensorflow==(원하는 버전)
+```
 
+나는 텐서플로우 1 버전이 더 편하기 때문에 1.9 버전을 설치했다.           
 
+​                        
 
+**설치 확인**
 
-뇌의 구조는 굉장히 복잡하지만 그걸 구성하고 있는 연결체인 뉴런의 구조는 생각보다 단순한 구조인데 이걸 기계로 만들어 보자는 생각에서 출발한 것이 ANN 인 것이다.        
-아래는 간단하게 뉴런의 작동방식을 도식화한 그림이다.<br/>
-<img src="D:/Github/DeepLearning/Artifical Neural Network/images/1.jpg" title="뉴런 동작방식" alt="뉴런 동작방식"></img><br/>
+---------------
 
-이 그림을 보면 input으로 들어온 각 x 값에 weight인 w 값이 각각 곱해지고 더해진 뒤 bias 값을 추가로 더하고 나온 값을 Activation function에 통과시키면 최종적으로 output이 나온다는 걸 알 수 있다.    
+이제 설치가 잘 되었는지 확인만 하면 된다. 설치한 가상환경에 들어가서 python 을 치면 파이썬 명령어를 한줄씩 칠 수 있게 나온다. 거기에서 한줄씩 아래 명령어를 치면 된다.            
+
+```python
+>>> import tensorflow as tf
+>>> print(tf.__version__)
+```
+
+출력값으로 내가 설치한 텐서플로우 버전이 나오면 설치가 완료된 것이다!                    
+
+위의 파이썬 창을 나오고 싶으면 exit() 를 치면 된다.                    
