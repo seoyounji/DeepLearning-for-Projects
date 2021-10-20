@@ -35,17 +35,17 @@ research > slim 폴더로 들어가면 아래와 같은데 각각의 파일이 �
 
 --------------------------------
 
-이번엔 custom dataset 말고 웹상에 있는 데이터셋을 이용한 이미지 분류 모델을 만들어보도록 하자. custom dataset을 이용한 이미지 분류 모델 생성은 다음 파일에서!          
+이번엔 custom dataset 말고 웹상에 있는 데이터셋을 이용한 이미지 분류 모델을 만들어보도록 하자. custom dataset을 이용한 이미지 분류 모델 생성은 다음 폴더에서!          
 
 이번엔 flowers 이미지 데이터를 이용해보자.           
 
-먼저 research > slim > datasets 의 download_and_convert_flowers.py 를 열어서 210 라인을 주석처리해줘야 한다. 이 줄은 모델 학습 후에 다운받은 flowers 이미지 데이터의 원본 파일을 지워버리는 코드인데 나중에 custom dataset을 학습시킬 때 flowers 이미지 데이터 폴더 구성을 참고해야하기 때문이다!              
+먼저 research > slim > datasets 의 download_and_convert_flowers.py 를 열어서 210 라인을 주석처리해줘야 한다. 이 줄은 모델 학습 후에 다운받은 flowers 이미지 데이터의 원본 파일을 지워버리는 코드인데 나중에 custom dataset을 학습시킬 때 flowers 이미지 데이터 폴더 구성을 참고해야하기 때문에 없애버리면 안되기 때문!          
 
 <div align="center" style="display:flex;">
 	<img src="./images/remove_flowers.JPG" width="50%"/>
 </div>
 
-이제 anaconda prompt를 열고 research > slim > datasets 폴더로 가서 아래 명령어를 실행시켜보자. 이 때 tensorflow를 깐 가상환경을 꼭 활성화시켜줘야한다는 점!                
+이제 anaconda prompt를 열고 research > slim > datasets 폴더로 가서 아래 명령어를 실행시켜보자. 이 때 tensorflow를 깐 가상환경을 꼭 활성화시켜줘야한다는 점 명심!                
 
 ```python
 python download_and_convert_data.py --dataset_name=flowers --dataset_dir=/tmp/flowers
@@ -53,11 +53,15 @@ python download_and_convert_data.py --dataset_name=flowers --dataset_dir=/tmp/fl
 
 dataset_dir엔 flowers 이미지 데이터와 그걸 TFRecord 포맷으로 변환시킨 결과를 저장할 경로를 써주면 된다.      
 
+경로에 가보면 train 용 파일 5개와 validation 용 파일 5개, 분류 클래스가 정의된 labels 파일이 생성된 걸 확인할 수 있다. 이제 학습시엔 원본 이미지를 사용하지 않고 이 TFRecord 포맷 파일을 사용한다!
 
 
 
-
-**ㅅㅅㅅㅅㅅㅅ**
+**드디어 모델 학습, 그런데 이제 밑바닥부터 시작하는**
 
 -----------------------
+
+학습 방법엔 크게 2가지가 있다. 
+
+하나는 
 
