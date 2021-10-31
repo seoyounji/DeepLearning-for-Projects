@@ -21,8 +21,9 @@ master 브랜치는 최신 tensorflow 버전 전용이라 tensorflow 1.9 와는 
 research > slim 폴더로 들어가면 아래와 같은데 각각의 파일이 뭐하는 파일인지 간단히 살펴보면
 
 <div align="center" style="display:flex;">
-	<img src="./images/slim.JPG" width="50%"/>
+	<img src="./images/slim.JPG" width="80%"/>
 </div>
+
 
 * download_and_convert_data.py : 학습할 이미지를 다운받고 TFRecord 포맷으로 생성 
 * train_image_classifier.py : 학습용 이미지 데이터셋을 이용해 학습
@@ -42,8 +43,9 @@ research > slim 폴더로 들어가면 아래와 같은데 각각의 파일이 �
 먼저 research > slim > datasets 의 download_and_convert_flowers.py 를 열어서 210 라인을 주석처리해줘야 한다. 이 줄은 모델 학습 후에 다운받은 flowers 이미지 데이터의 원본 파일을 지워버리는 코드인데 나중에 custom dataset을 학습시킬 때 flowers 이미지 데이터 폴더 구성을 참고해야하기 때문에 없애버리면 안되기 때문!          
 
 <div align="center" style="display:flex;">
-	<img src="./images/remove_flowers.JPG" width="50%"/>
+	<img src="./images/remove_flowers.JPG" width="80%"/>
 </div>
+
 
 이제 anaconda prompt를 열고 research > slim > datasets 폴더로 가서 아래 명령어를 실행시켜보자. 이 때 tensorflow를 깐 가상환경을 꼭 활성화시켜줘야한다는 점 명심!                
 
@@ -63,5 +65,39 @@ dataset_dir엔 flowers 이미지 데이터와 그걸 TFRecord 포맷으로 변�
 
 학습 방법엔 크게 2가지가 있다. 
 
-하나는 
+하나는 'Training a model from scratch'이고 다른 하나는 'Fine-tuning a model from an existing checkpoint' 이다.                    
+
+전자는 완전히 새롭게 모델을 만드는 방법이고 후자는 이미 만들어진 모델에 추가 이미지를 학습시켜 모델을 리모델링하는 방법이다. 효율성과 시간을 생각해보면 후자 방식이 아주 좋다. 특히 요새는 좋은 이미지 모델들이 많아서 후자의 방법으로 하는게 더 좋다! 하지만 이번엔 두 방식을 비교해보고자 모델을 완전히 새롭게 만드는 방법부터 해보자.             
+
+다운받은 flowers 데이터셋을 가지고 inception V1 모델을 학습시켜보자. (이 모델은 낮은 컴퓨터 사양에서도 돌아가는 저사양 딥러닝 네트워크 모델이다)                    
+
+research > slim > train_image_classifier.py 파일을 열고 마지막 부분에 아래 사진의 드래그 된 부분을 추가하고 anaconda prompt에서 research > slim 폴더로 이동한 후 
+
+<div align="center" style="display:flex;">
+	<img src="./images/add.JPG" width="80%"/>
+</div>
+
+>python train_image_classifier.py
+>
+>--train_dir=\tmp\train_inception_v1_flowers_logs   #모델 저장될 폴더
+>
+>--dataset_name=flowers   #데이터셋 이름
+>
+>--dataset_split_name=train   #데이터셋 중 하급에 사용될 이미지 선택
+>
+>--dataset_dir=\tmp\flowers   #데이터셋 위치
+>
+>--batch_size=16   #이미지 학습 batch size. 보통 32나 16을 사용. 메모리 부족 에러가 발생한다면 줄여줘야함
+>
+>--model_name=inception_v1   #사용할 모델 이름
+
+```python
+python train_image_classifier.py --train_dir=\tmp\train_inception_v1_flowers_log --dataset_name=flowers --dataset_split_name=train --dataset_dir=\tmp\flowers --batch_size=16 --model_name=inception_v1
+```
+
+위 명령어를 입력해주면 step이 올라가면서 학습이 진행되는 것을 확인할 수 있다. 이 때 아무런 파라미터 변수 서렁을 안하고 실행시켰기 때문에 네트워크 기본 값으로 학습이 진행된다. 자세한 파라미터 값을 알고 싶다면 train_image_classifier.py 파일을 보면 된다. 만약 학습을 중단시키고 싶다면 ctrl+c를 누르면 된다.       
+
+학습이 끝난뒤 모델 저장 위치로 지정한 폴더로 가면 모델이 ckpt 형태로 생성된 것을 확인할 수 있다. 찾아보면 알겠지만 텐서플로우에서는 다양한 형태로 학습된 모델을 저장할 수 있는데 
+
++ ckpt 파일 : 텐서플로우에서 학습된 모델의 구조를 제외한 변수들을 담고 있는 파일, 즉 모델의 가중치만 담고 있는 파일이다. 그래서 재학습이 가능하다는 장점이 있지만 실제 모델을 돌릴 때 필요없는 정보들도 많이 담고 있어 크기가 무겁다는 단점이 있다. 
 
